@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерия | Fat Cat Problems</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+</head>
+<body>
+
+	<header class="main-banner">
+    <img src="banner-fat-cat.jpg" alt="Fat Cat Problems Logo" class="banner-img">
+    <!-- <h1>FAT CAT PROBLEMS</h1> -->
+    </header>
+
+<nav class="navbar">
+    <ul>
+        <li><a href="index.html">Начало</a></li>
+        <li><a href="index.html#news">Новини</a></li>
+        <li><a href="index.html#info">Инфо</a></li>
+        <li><a href="gallery.html">Галерия</a></li>
+        <li><a href="music.html">Музика</a></li>
+        <li><a href="index.html#contacts">Контакти</a></li>
+    </ul>
+</nav>
+
+    <div class="container">
+        <main class="content">
+            <section class="section-box">
+                <h2>Албуми</h2>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn" onclick="filterGallery('all', this)">Всички</button>
+                    <button class="filter-btn active" onclick="filterGallery('concerts', this)">Концерти</button>
+                    <button class="filter-btn" onclick="filterGallery('members', this)">Членове</button>
+                    <button class="filter-btn" onclick="filterGallery('others', this)">Други</button>
+                </div>
+
+                <div class="photo-grid" id="galleryGrid">
+                    </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="fullSizeViewer" class="viewer-modal">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <button class="nav-btn prev" id="prevBtn">&#10094;</button>
+        
+        <div class="img-container">
+            <img id="fullSizeImg" src="" alt="View">
+            <div id="fullSizeCaption" class="viewer-caption"></div>
+        </div>
+        
+        <button class="nav-btn next" id="nextBtn">&#10095;</button>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 FAT CAT PROBLEMS | STAY PUNK!</p>
+    </footer>
+
+    <script src="gallery.js"></script>
+</body>
+</html>
