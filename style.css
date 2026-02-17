@@ -1,0 +1,138 @@
+/* Основни настройки */
+body {
+    font-family: 'Arial Black', sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    margin: 0;
+}
+
+/* Банер с лек гръндж ефект */
+.main-banner {
+    background: #ff4500; /* Ярко оранжево/червено */
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 8px solid #fff;
+    text-transform: uppercase;
+}
+
+.main-banner h1 {
+    font-size: 4rem;
+    margin: 0;
+    letter-spacing: -2px;
+    text-shadow: 4px 4px #000;
+}
+
+/* Навигация тип "Ska Checkers" */
+.navbar {
+    background: #000;
+    border-bottom: 4px solid #fff;
+    position: sticky;
+    top: 0;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 15px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Лейаут */
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    gap: 40px;
+}
+
+.content { flex: 3; }
+.sidebar { flex: 1; border-left: 2px dashed #ff4500; padding-left: 20px; }
+
+/* Стил на новината */
+.latest-news {
+    background: #222;
+    padding: 20px;
+    border: 3px solid #fff;
+    box-shadow: 10px 10px 0px #ff4500;
+}
+
+.tag {
+    background: #fff;
+    color: #000;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+.news-img {
+    width: 100%;
+    filter: grayscale(100%) contrast(150%); /* Пънк филтър */
+    margin: 15px 0;
+}
+
+/* Респонсив дизайн */
+@media (max-width: 768px) {
+    .container { flex-direction: column; }
+    .sidebar { border-left: none; border-top: 2px dashed #ff4500; padding-top: 20px; }
+}
+
+/* Плавно превъртане (Smooth Scroll) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Секциите да имат разстояние помежду си */
+.section-box {
+    padding: 60px 0; /* Прави място отгоре и отдолу */
+    border-bottom: 2px dashed #444;
+}
+
+/* Стил за разделител (Ska Style) */
+.ska-divider {
+    border: 5px solid #fff;
+    margin: 40px 0;
+    /* Можеш да добавиш черно-бял десен тук */
+    background-image: linear-gradient(45deg, #000 25%, transparent 25%), 
+                      linear-gradient(-45deg, #000 25%, transparent 25%), 
+                      linear-gradient(45deg, transparent 75%, #000 75%), 
+                      linear-gradient(-45deg, transparent 75%, #000 75%);
+    background-size: 20px 20px;
+    height: 20px;
+}
+
+/* Индивидуални новини вътре в секцията */
+.news-entry {
+    background: #333;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-left: 5px solid #ff4500;
+}
+
+.banner-img {
+    max-width: 100%; /* Да не излиза от екрана */
+    height: auto;    /* Да запазва пропорциите */
+    display: block;
+    margin: 0 auto 20px; /* Центриране и разстояние от текста */
+    border: 5px solid #fff; /* Малко пънк рамка */
+}
+
+.img {
+
+    max-width: 50%; /* Да не излиза от екрана */
+    max-height: 50%;    /* Да запазва пропорциите */
+    display: block;
+    margin: 0 auto 20px; /* Центриране и разстояние от текста */
+    border: 5px solid #fff; /* Малко пънк рамка */
+}
