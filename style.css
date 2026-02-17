@@ -431,18 +431,82 @@ audio {
     }
 }
 
+/* МОБИЛНА ВЕРСИЯ */
 @media (max-width: 768px) {
+    /* Навигацията става скролируема лента */
     .navbar ul {
+        display: flex;
         flex-direction: row;
-        overflow-x: auto; /* Позволява плъзгане наляво/надясно */
+        overflow-x: auto; /* Позволява плъзгане настрани */
         white-space: nowrap;
         justify-content: flex-start;
-        -webkit-overflow-scrolling: touch;
+        padding: 10px;
+        gap: 10px;
+        -webkit-overflow-scrolling: touch; /* Плавно плъзгане за iPhone */
+        scrollbar-width: none; /* Скрива грозния скролбар при Firefox */
+    }
+
+    .navbar ul::-webkit-scrollbar {
+        display: none; /* Скрива скролбара при Chrome/Safari */
+    }
+
+    .navbar li {
+        flex: 0 0 auto; /* Пречи на бутоните да се свиват */
+    }
+
+    .navbar a {
+        font-size: 1rem;
+        padding: 8px 15px;
+        border: 2px solid #fff; /* Прилича на нашивка */
+    }
+
+    /* Подреждаме съдържанието едно под друго */
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content, .sidebar {
+        width: 100%;
+        margin: 0;
+    }
+
+    /* Намаляваме заглавието, за да не заема целия екран */
+    .main-banner h1 {
+        font-size: 2.2rem;
+        padding: 0 10px;
+    }
+
+    .main-banner p {
+        font-size: 1rem;
+    }
+
+    /* Галерията на телефон - 1 или 2 колони според мястото */
+    .photo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+    }
+
+    /* Корекция на бутоните за албумите */
+    .filter-buttons {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .filter-btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
     }
 }
 
-@media (max-width: 480px) {
-    .main-banner p {
-        display: none;
+.photo-item img {
+    width: 100%;
+    height: 250px; /* Това остава за десктоп */
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .photo-item img {
+        height: 200px; /* Малко по-ниски снимки за телефон */
     }
 }
