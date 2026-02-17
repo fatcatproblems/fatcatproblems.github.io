@@ -1,6 +1,12 @@
 /* Основни настройки */
+h1, h2, h3 {
+    font-family: 'Bangers', system-ui; /* За агресивни заглавия */
+    letter-spacing: 2px;
+}
+
 body {
     font-family: 'Arial Black', sans-serif;
+    /* font-family: 'Permanent Marker', cursive; За по-суров вид на текстовете */
     background-color: #1a1a1a;
     color: #fff;
     margin: 0;
@@ -8,7 +14,7 @@ body {
 
 /* Банер с лек гръндж ефект */
 .main-banner {
-    background: #ff4500; /* Ярко оранжево/червено */
+    background: #000000; 
     padding: 60px 20px;
     text-align: center;
     border-bottom: 8px solid #fff;
@@ -59,14 +65,14 @@ body {
 }
 
 .content { flex: 3; }
-.sidebar { flex: 1; border-left: 2px dashed #ff4500; padding-left: 20px; }
+.sidebar { flex: 1; border-left: 2px dashed #fff; padding-left: 20px; }
 
 /* Стил на новината */
 .latest-news {
     background: #222;
     padding: 20px;
     border: 3px solid #fff;
-    box-shadow: 10px 10px 0px #ff4500;
+    box-shadow: 10px 10px 0px #fff;
 }
 
 .tag {
@@ -85,7 +91,7 @@ body {
 /* Респонсив дизайн */
 @media (max-width: 768px) {
     .container { flex-direction: column; }
-    .sidebar { border-left: none; border-top: 2px dashed #ff4500; padding-top: 20px; }
+    .sidebar { border-left: none; border-top: 2px dashed #fff; padding-top: 20px; }
 }
 
 /* Плавно превъртане (Smooth Scroll) */
@@ -117,7 +123,7 @@ html {
     background: #333;
     padding: 15px;
     margin-bottom: 20px;
-    border-left: 5px solid #ff4500;
+    border-left: 5px solid #fff;
 }
 
 .banner-img {
@@ -135,4 +141,44 @@ html {
     display: block;
     margin: 0 auto 20px; /* Центриране и разстояние от текста */
     border: 5px solid #fff; /* Малко пънк рамка */
+}
+
+.socials {
+    display: flex;
+    gap: 30px;      /* Повече разстояние, защото иконите са по-големи */
+    padding: 15px 0;
+    justify-content: flex-start; /* Подрежда ги вляво */
+}
+
+.socials a {
+    color: #fff;
+    font-size: 45px; /* <--- Ето тук контролираш размера! */
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    /* Твърда сянка за "комикс" ефект */
+    text-shadow: 4px 4px 0px #dfcec8; 
+}
+
+/* Ефект при посочване (Hover) */
+.socials a:hover {
+    color: #fff;
+    transform: scale(1.2) translateY(-5px); /* Скача нагоре и става още по-голямо */
+    text-shadow: 6px 6px 0px #000; /* Сменя цвета на сянката при ховър */
+}
+
+.content a {
+    color: #000;
+    text-decoration: none;
+    background: #fff;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    border: 2px solid #000;
+    display: inline-block;
+    transform: rotate(-1deg); /* Леко накриво */
+}
+
+.content a:hover {
+    transform: rotate(2deg) scale(1.1); /* Накланя се на другата страна */
+    background: #fff;
+    color: #000;
 }
