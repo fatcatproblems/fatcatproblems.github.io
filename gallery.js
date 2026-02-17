@@ -33,7 +33,9 @@ const allImages = [
 	{ name: 'Emo.jpg', category: 'members', title: 'Live in Sofia' },
 	{ name: 'Niki.jpg', category: 'members', title: 'Live in Sofia' },
 	{ name: 'Mitko.jpg', category: 'members', title: 'Live in Sofia' },
-	{ name: 'Majorkata.jpg', category: 'members', title: 'Live in Sofia' }	
+	{ name: 'Majorkata.jpg', category: 'members', title: 'Live in Sofia' },
+    { name: 'Asen.jpg', category: 'members', title: 'Live in Sofia' },
+    { name: 'Rado.jpg', category: 'members', title: 'Live in Sofia' }	
 ];
 
 let currentFilteredList = [];

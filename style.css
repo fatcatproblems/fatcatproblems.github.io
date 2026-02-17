@@ -1,18 +1,17 @@
 /* Основни настройки */
 h1, h2, h3 {
-    font-family: 'Bangers', system-ui; /* За агресивни заглавия */
+    font-family: 'Bangers', system-ui;
     letter-spacing: 2px;
 }
 
 body {
     font-family: 'Arial Black', sans-serif;
-    /* font-family: 'Permanent Marker', cursive; За по-суров вид на текстовете */
     background-color: #1a1a1a;
     color: #fff;
     margin: 0;
 }
 
-/* Банер с лек гръндж ефект */
+/* Банер */
 .main-banner {
     background: #000000; 
     padding: 60px 20px;
@@ -28,12 +27,13 @@ body {
     text-shadow: 4px 4px #000;
 }
 
-/* Навигация тип "Ska Checkers" */
+/* НАВИГАЦИЯ - СТОИ ВИНАГИ ГОРЕ (STICKY) */
 .navbar {
     background: #000;
     border-bottom: 4px solid #fff;
-    position: sticky;
-    top: 0;
+    position: sticky; /* Върнато на sticky за фиксиране */
+    top: 0;           /* Залепва най-горе */
+    z-index: 1000;    /* Гарантира, че е над останалите елементи */
 }
 
 .navbar ul {
@@ -41,6 +41,7 @@ body {
     justify-content: center;
     list-style: none;
     padding: 15px;
+    margin: 0;
 }
 
 .navbar a {
@@ -84,41 +85,30 @@ body {
 
 .news-img {
     width: 100%;
-    filter: grayscale(100%) contrast(150%); /* Пънк филтър */
+    filter: grayscale(100%) contrast(150%);
     margin: 15px 0;
+    border: 3px solid #fff;
 }
 
-/* Респонсив дизайн */
-@media (max-width: 768px) {
-    .container { flex-direction: column; }
-    .sidebar { border-left: none; border-top: 2px dashed #fff; padding-top: 20px; }
-}
-
-/* Плавно превъртане (Smooth Scroll) */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Секциите да имат разстояние помежду си */
+/* Секциите */
 .section-box {
-    padding: 60px 0; /* Прави място отгоре и отдолу */
+    padding: 60px 0;
     border-bottom: 2px dashed #444;
 }
 
-/* Стил за разделител (Ska Style) */
+/* Ska Style Divider */
 .ska-divider {
     border: 5px solid #fff;
     margin: 40px 0;
-    /* Можеш да добавиш черно-бял десен тук */
     background-image: linear-gradient(45deg, #000 25%, transparent 25%), 
                       linear-gradient(-45deg, #000 25%, transparent 25%), 
                       linear-gradient(45deg, transparent 75%, #000 75%), 
                       linear-gradient(-45deg, transparent 75%, #000 75%);
     background-size: 20px 20px;
+    background-color: #fff;
     height: 20px;
 }
 
-/* Индивидуални новини вътре в секцията */
 .news-entry {
     background: #333;
     padding: 15px;
@@ -127,45 +117,42 @@ html {
 }
 
 .banner-img {
-    max-width: 100%; /* Да не излиза от екрана */
-    height: auto;    /* Да запазва пропорциите */
+    max-width: 100%;
+    height: auto;
     display: block;
-    margin: 0 auto 20px; /* Центриране и разстояние от текста */
-    border: 5px solid #fff; /* Малко пънк рамка */
+    margin: 0 auto 20px;
+    border: 5px solid #fff;
 }
 
 .img {
-
-    max-width: 50%; /* Да не излиза от екрана */
-    max-height: 50%;    /* Да запазва пропорциите */
+    max-width: 50%;
+    height: auto;
     display: block;
-    margin: 0 auto 20px; /* Центриране и разстояние от текста */
-    border: 5px solid #fff; /* Малко пънк рамка */
+    margin: 0 auto 20px;
+    border: 5px solid #fff;
 }
 
+/* Социалки */
 .socials {
     display: flex;
-    gap: 30px;      /* Повече разстояние, защото иконите са по-големи */
+    gap: 30px;
     padding: 15px 0;
-    justify-content: flex-start; /* Подрежда ги вляво */
 }
 
 .socials a {
     color: #fff;
-    font-size: 45px; /* <--- Ето тук контролираш размера! */
+    font-size: 45px;
     text-decoration: none;
-    transition: all 0.2s ease-in-out;
-    /* Твърда сянка за "комикс" ефект */
-    text-shadow: 4px 4px 0px #dfcec8; 
+    transition: 0.2s;
+    text-shadow: 4px 4px 0px #333;
 }
 
-/* Ефект при посочване (Hover) */
 .socials a:hover {
-    color: #fff;
-    transform: scale(1.2) translateY(-5px); /* Скача нагоре и става още по-голямо */
-    text-shadow: 6px 6px 0px #000; /* Сменя цвета на сянката при ховър */
+    transform: scale(1.2) translateY(-5px);
+    text-shadow: 6px 6px 0px #fff;
 }
 
+/* Пънк линкове */
 .content a {
     color: #000;
     text-decoration: none;
@@ -174,62 +161,16 @@ html {
     text-transform: uppercase;
     border: 2px solid #000;
     display: inline-block;
-    transform: rotate(-1deg); /* Леко накриво */
+    transform: rotate(-1deg);
 }
 
 .content a:hover {
-    transform: rotate(2deg) scale(1.1); /* Накланя се на другата страна */
+    transform: rotate(2deg) scale(1.1);
     background: #fff;
     color: #000;
 }
 
-/* Настройки на мрежата */
-.photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Автоматично подреждане */
-    gap: 20px;
-    padding: 20px 0;
-}
-
-/* Стил на всяка снимка */
-.photo-item {
-    background: #000;
-    border: 4px solid #fff;
-    box-shadow: 8px 8px 0px #fff;
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.3s ease;
-}
-
-.photo-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover; /* Реже снимката да запълни квадрата без да я разтяга */
-    display: block;
-    filter: grayscale(100%) contrast(120%); /* Пънк ефект */
-    transition: all 0.4s ease;
-}
-
-/* Описание под снимката (скрито по подразбиране) */
-.photo-caption {
-    background: #fff;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    font-family: 'Bangers', cursive;
-    text-transform: uppercase;
-}
-
-/* Ефекти при посочване */
-.photo-item:hover {
-    transform: scale(1.02) rotate(1deg);
-}
-
-.photo-item:hover img {
-    filter: grayscale(0%) contrast(100%); /* Снимката става цветна */
-}
-
-/* ГАЛЕРИЯ МРЕЖА */
+/* ГАЛЕРИЯ */
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -240,7 +181,7 @@ html {
 .photo-item {
     background: #000;
     border: 4px solid #fff;
-    box-shadow: 8px 8px 0px #ff4500;
+    box-shadow: 8px 8px 0px #fff;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -250,13 +191,8 @@ html {
     width: 100%;
     height: 250px;
     object-fit: cover;
-    display: block;
     filter: grayscale(100%) contrast(120%);
     transition: 0.4s;
-}
-
-.photo-item:hover {
-    transform: scale(1.03) rotate(-1deg);
 }
 
 .photo-item:hover img {
@@ -272,241 +208,83 @@ html {
     text-transform: uppercase;
 }
 
-/* VIEWER MODAL (ЦЯЛ ЕКРАН) */
-.viewer-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
-    align-items: center;
-    justify-content: center;
-}
-
-.img-container {
-    text-align: center;
-    max-width: 85%;
-}
-
-#fullSizeImg {
-    max-width: 100%;
-    max-height: 85vh;
-    border: 5px solid #fff;
-    box-shadow: 0 0 25px #ff4500;
-}
-
-.viewer-caption {
-    color: #fff;
-    font-family: 'Bangers', cursive;
-    font-size: 1.8rem;
-    margin-top: 15px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px; right: 30px;
-    color: #fff; font-size: 50px;
-    cursor: pointer;
-}
-
-.nav-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: #fff;
-    font-size: 40px;
-    cursor: pointer;
+/* МУЗИКА */
+.audio-player-container {
+    background: #111;
     padding: 20px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: 0.3s;
+    border: 3px solid #fff;
+    box-shadow: 10px 10px 0px #fff;
 }
 
-.nav-btn:hover { background: #ff4500; }
-.prev { left: 20px; }
-.next { right: 20px; }
+audio {
+    width: 100%;
+    filter: invert(100%);
+}
 
+/* Респонсив дизайн */
+@media (max-width: 768px) {
+    .container { flex-direction: column; }
+    .sidebar { border-left: none; border-top: 2px dashed #fff; padding-top: 20px; }
+    .main-banner h1 { font-size: 2.2rem; }
+    
+    .navbar ul {
+        flex-direction: row;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 10px;
+    }
+    
+    .navbar a { border: 2px solid #fff; margin-right: 5px; white-space: nowrap; }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================================
+   ФИЛТЪР БУТОНИ - GALLERY.HTML
+   ========================================= */
 .filter-buttons {
     margin-bottom: 30px;
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 0;
 }
 
 .filter-btn {
     background: #000;
     color: #fff;
     border: 3px solid #fff;
-    padding: 10px 20px;
+    padding: 10px 25px;
     font-family: 'Bangers', cursive;
     font-size: 1.2rem;
     cursor: pointer;
     text-transform: uppercase;
-    transition: 0.2s;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 4px 4px 0px #333;
 }
 
-.filter-btn:hover, .filter-btn.active {
-    background: #ff4500;
-    box-shadow: 5px 5px 0px #fff;
-    transform: translateY(-3px);
+.filter-btn:hover {
+    background: #444;
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0px #fff;
 }
 
-/* МУЗИКАЛНА СЕКЦИЯ */
-.audio-player-container {
-    background: #111;
-    padding: 20px;
-    border: 3px solid #fff;
-    box-shadow: 10px 10px 0px #ff4500;
-}
-
-.track-item {
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px dashed #444;
-}
-
-.track-info {
-    margin-bottom: 10px;
-    font-family: 'Bangers', cursive;
-    font-size: 1.4rem;
-    color: #ff4500;
-    display: flex;
-    gap: 15px;
-}
-
-.track-number {
-    color: #fff;
-    background: #ff4500;
-    padding: 0 8px;
-}
-
-/* Стилизиране на самия плейър (за браузъри като Chrome/Edge) */
-audio {
-    width: 100%;
-    height: 35px;
-    filter: invert(100%) hue-rotate(180deg) brightness(1.5); /* Прави го да изглежда тъмен/пънк */
+.filter-btn.active {
+    background: #fff !important; 
+    color: #000 !important;      
+    box-shadow: 5px 5px 0px #888;
+    transform: scale(1.05);      
+    border-color: #000;
 }
 
 @media (max-width: 768px) {
-    /* 1. Навигацията - подреждаме бутоните един под друг */
-    .navbar ul {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .navbar a {
-        display: block;
-        text-align: center;
-        font-size: 1.2rem;
-        padding: 12px;
-        border: 2px solid #fff; /* Прилича на нашивки */
-    }
-
-    /* 2. Контейнерът - махаме страничната лента (Sidebar) */
-    .container {
-        flex-direction: column; /* Слага Sidebar-а под основното съдържание */
-    }
-
-    .sidebar {
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    /* 3. Банерът - намаляваме шрифта, за да не заема целия екран */
-    .main-banner h1 {
-        font-size: 2.5rem;
-    }
-
-    /* 4. Галерията - правим я в 1 или 2 колони максимум */
-    .photo-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-        gap: 15px;
-    }
-
-    /* 5. Общи отстъпи */
-    .section-box {
-        padding: 15px;
-    }
-}
-
-/* МОБИЛНА ВЕРСИЯ */
-@media (max-width: 768px) {
-    /* Навигацията става скролируема лента */
-    .navbar ul {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto; /* Позволява плъзгане настрани */
-        white-space: nowrap;
-        justify-content: flex-start;
-        padding: 10px;
-        gap: 10px;
-        -webkit-overflow-scrolling: touch; /* Плавно плъзгане за iPhone */
-        scrollbar-width: none; /* Скрива грозния скролбар при Firefox */
-    }
-
-    .navbar ul::-webkit-scrollbar {
-        display: none; /* Скрива скролбара при Chrome/Safari */
-    }
-
-    .navbar li {
-        flex: 0 0 auto; /* Пречи на бутоните да се свиват */
-    }
-
-    .navbar a {
-        font-size: 1rem;
-        padding: 8px 15px;
-        border: 2px solid #fff; /* Прилича на нашивка */
-    }
-
-    /* Подреждаме съдържанието едно под друго */
-    .container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .content, .sidebar {
-        width: 100%;
-        margin: 0;
-    }
-
-    /* Намаляваме заглавието, за да не заема целия екран */
-    .main-banner h1 {
-        font-size: 2.2rem;
-        padding: 0 10px;
-    }
-
-    .main-banner p {
-        font-size: 1rem;
-    }
-
-    /* Галерията на телефон - 1 или 2 колони според мястото */
-    .photo-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 10px;
-    }
-
-    /* Корекция на бутоните за албумите */
-    .filter-buttons {
-        justify-content: center;
-        gap: 8px;
-    }
-
     .filter-btn {
-        font-size: 0.9rem;
-        padding: 8px 12px;
-    }
-}
-
-.photo-item img {
-    width: 100%;
-    height: 250px; /* Това остава за десктоп */
-    object-fit: cover;
-}
-
-@media (max-width: 768px) {
-    .photo-item img {
-        height: 200px; /* Малко по-ниски снимки за телефон */
+        padding: 8px 15px;
+        font-size: 1rem;
+        flex: 1 1 auto;
+        text-align: center;
     }
 }
