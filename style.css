@@ -387,3 +387,62 @@ audio {
     height: 35px;
     filter: invert(100%) hue-rotate(180deg) brightness(1.5); /* Прави го да изглежда тъмен/пънк */
 }
+
+@media (max-width: 768px) {
+    /* 1. Навигацията - подреждаме бутоните един под друг */
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .navbar a {
+        display: block;
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 12px;
+        border: 2px solid #fff; /* Прилича на нашивки */
+    }
+
+    /* 2. Контейнерът - махаме страничната лента (Sidebar) */
+    .container {
+        flex-direction: column; /* Слага Sidebar-а под основното съдържание */
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    /* 3. Банерът - намаляваме шрифта, за да не заема целия екран */
+    .main-banner h1 {
+        font-size: 2.5rem;
+    }
+
+    /* 4. Галерията - правим я в 1 или 2 колони максимум */
+    .photo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        gap: 15px;
+    }
+
+    /* 5. Общи отстъпи */
+    .section-box {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: row;
+        overflow-x: auto; /* Позволява плъзгане наляво/надясно */
+        white-space: nowrap;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-banner p {
+        display: none;
+    }
+}
