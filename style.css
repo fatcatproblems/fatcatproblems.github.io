@@ -425,135 +425,86 @@ audio { width: 100%; filter: invert(100%); }
     border-radius: 0;
 }
 
-/* Мрежата */
+/* 1. Решетка за видео кутиите */
 .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 30px;
     margin: 20px 0;
 }
 
-/* Кутията на видеото */
+/* 2. Основна кутия на всяко видео */
 .video-item {
     background: #000;
     border: 3px solid #fff;
-    box-shadow: 8px 8px 0px #fff;
-    padding: 10px;
+    box-shadow: 10px 10px 0px #fff;
+    padding: 15px;
+    transition: transform 0.3s ease;
 }
 
-/* Самият плейър */
-.video-item iframe {
-    width: 100%;
-    aspect-ratio: 16 / 9; /* Модерен начин за поддържане на пропорция */
-    display: block;
+.video-item:hover {
+    transform: translateY(-5px);
 }
 
-.video-caption {
-    font-family: 'Bangers', cursive;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.video-link {
-    text-decoration: none;
-    border: none !important; /* Махаме белия фон на линка, който сложихме по-рано */
-    background: none !important;
-    padding: 0 !important;
-    transform: none !important;
-    display: block;
-}
-
-.video-thumbnail-container {
-    position: relative;
-    border: 3px solid #fff;
-    overflow: hidden;
-    line-height: 0;
-}
-
-.video-thumb {
-    width: 100%;
-    height: auto;
-    filter: grayscale(100%) contrast(120%);
-    transition: 0.3s ease;
-}
-
-.play-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.9);
-    color: #000;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    opacity: 0.8;
-    transition: 0.3s;
-}
-
-.video-item:hover .video-thumb {
-    filter: grayscale(0%) contrast(100%);
-}
-
-.video-item:hover .play-overlay {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.2);
-    background: #ff0000; /* Пънк червено при ховър */
-    color: #fff;
-}
-
-/* Махаме всякакви рамки и фонове от линка, които сложихме в общите настройки */
-.punk-video-link {
+/* 3. Изчистване на стила на линка (важно за пънк визията) */
+.video-link-container {
+    text-decoration: none !important;
     background: none !important;
     border: none !important;
     padding: 0 !important;
-    display: block !important;
-    transform: none !important;
-}
-
-.thumb-wrapper {
+    display: block;
     position: relative;
-    border: 4px solid #fff;
-    box-shadow: 10px 10px 0px #fff;
     line-height: 0;
-    cursor: pointer;
 }
 
+/* 4. Снимката (Thumbnail) */
 .video-thumb {
     width: 100%;
     height: auto;
-    filter: grayscale(100%) contrast(110%);
-    transition: 0.3s;
+    border: 2px solid #fff;
+    filter: none;
+    transition: 0.4s ease;
 }
 
-.play-btn-circle {
+/* 5. Play бутона върху снимката */
+.play-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70px;
     height: 70px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
     color: #000;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 30px;
-    opacity: 0.9;
+    opacity: 0.8;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
-/* Ефекти при посочване */
-.punk-video-link:hover .video-thumb {
-    filter: grayscale(0%) contrast(100%);
+/* 6. Ховър ефекти */
+.video-link-container:hover .video-thumb {
+    filter: none;
 }
 
-.punk-video-link:hover .play-btn-circle {
-    background: #ff0000;
+.video-link-container:hover .play-overlay {
+    opacity: 1;
+    background: #ff0000; /* Пънк червено */
     color: #fff;
     transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* 7. Заглавието под видеото */
+.video-caption {
+    font-family: 'Bangers', cursive;
+    text-align: center;
+    margin-top: 15px;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    text-transform: uppercase;
 }

@@ -36,7 +36,20 @@ const allImages = [
     { name: 'Mitko.jpg', category: 'members', title: 'Member' },
     { name: 'Majorkata.jpg', category: 'members', title: 'Member' },
     { name: 'Asen.jpg', category: 'members', title: 'Member' },
-    { name: 'Rado.jpg', category: 'members', title: 'Member' }   
+    { name: 'Rado.jpg', category: 'members', title: 'Member' },
+    { name: 'misc/image1.jpg', category: 'others', title: 'Member' },
+    { name: 'misc/image2.jpg', category: 'others', title: 'Member' },
+    { name: 'misc/image3.jpg', category: 'others', title: 'Member' },
+    { name: 'misc/image4.jpg', category: 'others', title: 'Member' },
+    { name: 'misc/image5.jpg', category: 'others', title: 'Member' },
+    { name: 'misc/image6.jpg', category: 'others', title: 'Member' },
+    { name: 'misc/image7.jpg', category: 'others', title: 'Member' },
+    { name: 'misc/image8.jpg', category: 'others', title: 'Member' },
+    { name: 'misc/image9.jpg', category: 'others', title: 'Member' },
+    { name: 'misc/image10.jpg', category: 'others', title: 'Member' },
+    { name: 'misc/image11.jpg', category: 'others', title: 'Member' },
+    { name: 'misc/image12.jpg', category: 'others', title: 'Member' },
+    { name: 'misc/image13.jpg', category: 'others', title: 'Member' },
 ];
 
 let currentFilteredList = [];
