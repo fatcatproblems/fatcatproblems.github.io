@@ -1,4 +1,6 @@
-/* Основни настройки */
+/* =========================================
+   1. ОСНОВНИ НАСТРОЙКИ & ТИПОГРАФИЯ
+   ========================================= */
 h1, h2, h3 {
     font-family: 'Bangers', system-ui;
     letter-spacing: 2px;
@@ -11,7 +13,13 @@ body {
     margin: 0;
 }
 
-/* Банер */
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================================
+   2. БАНЕР & НАВИГАЦИЯ
+   ========================================= */
 .main-banner {
     background: #000000; 
     padding: 60px 20px;
@@ -27,13 +35,12 @@ body {
     text-shadow: 4px 4px #000;
 }
 
-/* НАВИГАЦИЯ - СТОИ ВИНАГИ ГОРЕ (STICKY) */
 .navbar {
     background: #000;
     border-bottom: 4px solid #fff;
-    position: sticky; /* Върнато на sticky за фиксиране */
-    top: 0;           /* Залепва най-горе */
-    z-index: 1000;    /* Гарантира, че е над останалите елементи */
+    position: sticky; 
+    top: 0;           
+    z-index: 1000;    
 }
 
 .navbar ul {
@@ -56,7 +63,9 @@ body {
     color: #000;
 }
 
-/* Лейаут */
+/* =========================================
+   3. ЛЕЙАУТ & СЪДЪРЖАНИЕ
+   ========================================= */
 .container {
     display: flex;
     max-width: 1200px;
@@ -68,7 +77,11 @@ body {
 .content { flex: 3; }
 .sidebar { flex: 1; border-left: 2px dashed #fff; padding-left: 20px; }
 
-/* Стил на новината */
+.section-box {
+    padding: 60px 0;
+    border-bottom: 2px dashed #444;
+}
+
 .latest-news {
     background: #222;
     padding: 20px;
@@ -90,13 +103,6 @@ body {
     border: 3px solid #fff;
 }
 
-/* Секциите */
-.section-box {
-    padding: 60px 0;
-    border-bottom: 2px dashed #444;
-}
-
-/* Ska Style Divider */
 .ska-divider {
     border: 5px solid #fff;
     margin: 40px 0;
@@ -116,7 +122,7 @@ body {
     border-left: 5px solid #fff;
 }
 
-.banner-img {
+.banner-img, .img {
     max-width: 100%;
     height: auto;
     display: block;
@@ -124,15 +130,8 @@ body {
     border: 5px solid #fff;
 }
 
-.img {
-    max-width: 50%;
-    height: auto;
-    display: block;
-    margin: 0 auto 20px;
-    border: 5px solid #fff;
-}
+.img { max-width: 50%; }
 
-/* Социалки */
 .socials {
     display: flex;
     gap: 30px;
@@ -152,7 +151,6 @@ body {
     text-shadow: 6px 6px 0px #fff;
 }
 
-/* Пънк линкове */
 .content a {
     color: #000;
     text-decoration: none;
@@ -170,7 +168,9 @@ body {
     color: #000;
 }
 
-/* ГАЛЕРИЯ */
+/* =========================================
+   4. ГАЛЕРИЯ & ФИЛТРИ
+   ========================================= */
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -208,42 +208,6 @@ body {
     text-transform: uppercase;
 }
 
-/* МУЗИКА */
-.audio-player-container {
-    background: #111;
-    padding: 20px;
-    border: 3px solid #fff;
-    box-shadow: 10px 10px 0px #fff;
-}
-
-audio {
-    width: 100%;
-    filter: invert(100%);
-}
-
-/* Респонсив дизайн */
-@media (max-width: 768px) {
-    .container { flex-direction: column; }
-    .sidebar { border-left: none; border-top: 2px dashed #fff; padding-top: 20px; }
-    .main-banner h1 { font-size: 2.2rem; }
-    
-    .navbar ul {
-        flex-direction: row;
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding: 10px;
-    }
-    
-    .navbar a { border: 2px solid #fff; margin-right: 5px; white-space: nowrap; }
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* =========================================
-   ФИЛТЪР БУТОНИ - GALLERY.HTML
-   ========================================= */
 .filter-buttons {
     margin-bottom: 30px;
     display: flex;
@@ -258,14 +222,13 @@ html {
     color: #fff;
     border: 3px solid #fff;
     padding: 10px 25px;
-    font-family: 'Bangers', cursive;
+    font-family: 'Bangers', cursive !important;
     font-size: 1.2rem;
     cursor: pointer;
     text-transform: uppercase;
     transition: all 0.2s ease-in-out;
     box-shadow: 4px 4px 0px #333;
-    font-family: 'Bangers', cursive !important; /* Форсираме шрифта */
-    -webkit-appearance: none; /* Премахва специфичните стилове на iOS */
+    -webkit-appearance: none;
     appearance: none;
 }
 
@@ -283,43 +246,42 @@ html {
     border-color: #000;
 }
 
-@media (max-width: 768px) {
-    .filter-btn {
-        padding: 8px 15px;
-        font-size: 1.1rem; /* Малко по-голям, за да се чете Bangers по-добре */
-        font-family: 'Bangers', cursive !important; /* Повтаряме го тук */
-        flex: 1 1 auto;
-        text-align: center;
-    }
+/* =========================================
+   5. МУЗИКА & VIEWER
+   ========================================= */
+.audio-player-container {
+    background: #111;
+    padding: 20px;
+    border: 3px solid #fff;
+    box-shadow: 10px 10px 0px #fff;
 }
 
-/* =========================================
-   VIEWER MODAL (ПРОЗОРЕЦЪТ ЗА СНИМКИ)
-   ========================================= */
+audio { width: 100%; filter: invert(100%); }
+
 .viewer-modal {
-    display: none; /* Скрито по подразбиране, JS го показва */
+    display: none;
     position: fixed;
-    z-index: 2000; /* Над навигацията */
-    left: 0; 
-    top: 0;
-    width: 100%; 
-    height: 100%;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.95);
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    touch-action: none; /* Забранява на браузъра да скролва страницата, докато модалът е отворен */
 }
 
-.img-container {
-    text-align: center;
-    max-width: 90%;
-}
+.img-container { text-align: center; max-width: 90%; }
 
 #fullSizeImg {
     max-width: 100%;
     max-height: 80vh;
     border: 5px solid #fff;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    /* Добавяме малко анимация при смяна на снимката */
+    transition: opacity 0.2s ease-in-out;
+    user-select: none; /* Пречи на маркирането на снимката при задържане */
+    -webkit-user-drag: none; /* Пречи на вградения drag ефект на браузъра */
 }
 
 .viewer-caption {
@@ -330,18 +292,13 @@ html {
     text-transform: uppercase;
 }
 
-/* Бутон за затваряне */
 .close-btn {
     position: absolute;
-    top: 20px; 
-    right: 30px;
-    color: #fff; 
-    font-size: 60px;
-    cursor: pointer;
-    line-height: 1;
+    top: 20px; right: 30px;
+    color: #fff; font-size: 60px;
+    cursor: pointer; line-height: 1;
 }
 
-/* Бутони за навигация (Предишна/Следваща) */
 .nav-btn {
     background: rgba(255, 255, 255, 0.1);
     border: none;
@@ -355,21 +312,52 @@ html {
     transition: 0.3s;
 }
 
-.nav-btn:hover { 
-    background: #fff; 
-    color: #000; 
-}
-
+.nav-btn:hover { background: #fff; color: #000; }
 .prev { left: 10px; }
 .next { right: 10px; }
 
-/* Регулиране за мобилни устройства */
+/* =========================================
+   6. РЕСПОНСИВ ДИЗАЙН (MOBILE)
+   ========================================= */
 @media (max-width: 768px) {
-    #fullSizeImg {
-        max-height: 60vh;
-    }
-    .nav-btn {
+    /* Контейнер */
+    .container { flex-direction: column; }
+    .sidebar { border-left: none; border-top: 2px dashed #fff; padding-top: 20px; }
+    .main-banner h1 { font-size: 2.2rem; }
+
+    /* НАВИГАЦИЯ - ФИКС ЗА СКРОЛ */
+    .navbar ul {
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden; /* Спира вертикалното мърдане */
+        justify-content: flex-start;
         padding: 10px;
-        font-size: 30px;
+        gap: 8px;
+        align-items: center;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
     }
+    
+    .navbar ul::-webkit-scrollbar { display: none; }
+
+    .navbar a { 
+        border: 2px solid #fff; 
+        margin-right: 5px; 
+        white-space: nowrap; 
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    /* Филтър бутони */
+    .filter-btn {
+        padding: 8px 15px;
+        font-size: 1.1rem;
+        font-family: 'Bangers', cursive !important;
+        flex: 1 1 auto;
+        text-align: center;
+    }
+
+    /* Прозорец за снимки */
+    #fullSizeImg { max-height: 60vh; }
+    .nav-btn { padding: 10px; font-size: 30px; }
 }
