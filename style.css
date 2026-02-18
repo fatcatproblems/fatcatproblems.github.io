@@ -508,3 +508,33 @@ audio { width: 100%; filter: invert(100%); }
     line-height: 1.4;
     text-transform: uppercase;
 }
+
+/* Контейнер за подравняване */
+.footer-bottom-row {
+    display: flex;
+    justify-content: flex-end; /* Избутва всичко надясно */
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mini-counter-static {
+    opacity: 0.3; /* Прозрачност */
+    transition: opacity 0.3s ease;
+}
+
+.mini-counter-static img {
+    width: 70px; /* Още по-малък размер */
+    height: auto;
+    display: block;
+    filter: grayscale(100%); /* Черно-бял */
+}
+
+/* Ефект при посочване */
+.mini-counter-static:hover {
+    opacity: 1;
+}
+
+.mini-counter-static:hover img {
+    filter: grayscale(0%);
+}
