@@ -410,3 +410,150 @@ audio { width: 100%; filter: invert(100%); }
     margin-bottom: 8px;
     font-size: 1.1rem;
 }
+
+.news-divider {
+    border: 2px solid #fff; /* По-тънка рамка */
+    margin: 20px auto;
+    background-image: linear-gradient(45deg, #000 25%, transparent 25%), 
+                      linear-gradient(-45deg, #000 25%, transparent 25%), 
+                      linear-gradient(45deg, transparent 75%, #000 75%), 
+                      linear-gradient(-45deg, transparent 75%, #000 75%);
+    background-size: 10px 10px; /* По-малки квадратчета */
+    background-color: #fff;
+    height: 10px; /* По-ниска височина */
+    width: 80%;   /* Не заема целия екран, стои по-елегантно */
+    border-radius: 0;
+}
+
+/* Мрежата */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+/* Кутията на видеото */
+.video-item {
+    background: #000;
+    border: 3px solid #fff;
+    box-shadow: 8px 8px 0px #fff;
+    padding: 10px;
+}
+
+/* Самият плейър */
+.video-item iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Модерен начин за поддържане на пропорция */
+    display: block;
+}
+
+.video-caption {
+    font-family: 'Bangers', cursive;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.video-link {
+    text-decoration: none;
+    border: none !important; /* Махаме белия фон на линка, който сложихме по-рано */
+    background: none !important;
+    padding: 0 !important;
+    transform: none !important;
+    display: block;
+}
+
+.video-thumbnail-container {
+    position: relative;
+    border: 3px solid #fff;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.video-thumb {
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%) contrast(120%);
+    transition: 0.3s ease;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.video-item:hover .video-thumb {
+    filter: grayscale(0%) contrast(100%);
+}
+
+.video-item:hover .play-overlay {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+    background: #ff0000; /* Пънк червено при ховър */
+    color: #fff;
+}
+
+/* Махаме всякакви рамки и фонове от линка, които сложихме в общите настройки */
+.punk-video-link {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    display: block !important;
+    transform: none !important;
+}
+
+.thumb-wrapper {
+    position: relative;
+    border: 4px solid #fff;
+    box-shadow: 10px 10px 0px #fff;
+    line-height: 0;
+    cursor: pointer;
+}
+
+.video-thumb {
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%) contrast(110%);
+    transition: 0.3s;
+}
+
+.play-btn-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    opacity: 0.9;
+}
+
+/* Ефекти при посочване */
+.punk-video-link:hover .video-thumb {
+    filter: grayscale(0%) contrast(100%);
+}
+
+.punk-video-link:hover .play-btn-circle {
+    background: #ff0000;
+    color: #fff;
+    transform: translate(-50%, -50%) scale(1.1);
+}
