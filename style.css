@@ -264,6 +264,9 @@ html {
     text-transform: uppercase;
     transition: all 0.2s ease-in-out;
     box-shadow: 4px 4px 0px #333;
+    font-family: 'Bangers', cursive !important; /* Форсираме шрифта */
+    -webkit-appearance: none; /* Премахва специфичните стилове на iOS */
+    appearance: none;
 }
 
 .filter-btn:hover {
@@ -283,7 +286,8 @@ html {
 @media (max-width: 768px) {
     .filter-btn {
         padding: 8px 15px;
-        font-size: 1rem;
+        font-size: 1.1rem; /* Малко по-голям, за да се чете Bangers по-добре */
+        font-family: 'Bangers', cursive !important; /* Повтаряме го тук */
         flex: 1 1 auto;
         text-align: center;
     }
