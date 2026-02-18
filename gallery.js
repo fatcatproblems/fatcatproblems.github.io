@@ -28,35 +28,45 @@ const allImages = [
     { name: '2025.04.26 @ Pit.jpg', category: 'concerts', title: 'Live in Sofia' },
     { name: '2025.10.25 Punky Blues.jpg', category: 'concerts', title: 'Live in Sofia' },
     { name: '2025.12.05 Зимен Дъжд, НаштеХора @ThePit.jpg', category: 'concerts', title: 'Live in Sofia' },
-    { name: 'Kolyo.jpg', category: 'members', title: 'Live in Sofia' },
-    { name: 'Murphy.jpg', category: 'members', title: 'Live in Sofia' },
-    { name: 'Emo.jpg', category: 'members', title: 'Live in Sofia' },
-    { name: 'Niki.jpg', category: 'members', title: 'Live in Sofia' },
-    { name: 'Mitko.jpg', category: 'members', title: 'Live in Sofia' },
-    { name: 'Majorkata.jpg', category: 'members', title: 'Live in Sofia' },
-    { name: 'Asen.jpg', category: 'members', title: 'Live in Sofia' },
-    { name: 'Rado.jpg', category: 'members', title: 'Live in Sofia' }   
+    { name: '2026.02.21 Toy Letters @ Carve.jpg', category: 'concerts', title: 'Live in Sofia' },
+    { name: 'Kolyo.jpg', category: 'members', title: 'Member' },
+    { name: 'Murphy.jpg', category: 'members', title: 'Member' },
+    { name: 'Emo.jpg', category: 'members', title: 'Member' },
+    { name: 'Niki.jpg', category: 'members', title: 'Member' },
+    { name: 'Mitko.jpg', category: 'members', title: 'Member' },
+    { name: 'Majorkata.jpg', category: 'members', title: 'Member' },
+    { name: 'Asen.jpg', category: 'members', title: 'Member' },
+    { name: 'Rado.jpg', category: 'members', title: 'Member' }   
 ];
 
 let currentFilteredList = [];
 let currentIndex = 0;
+let currentCategory = 'concerts';
+let currentYearFilter = 'all';
 
 const grid = document.getElementById('galleryGrid');
 const viewer = document.getElementById('fullSizeViewer');
 const fullImg = document.getElementById('fullSizeImg');
 const caption = document.getElementById('fullSizeCaption');
+const yearContainer = document.getElementById('yearFilterContainer');
 
 function formatName(fileName) {
     return fileName.replace(/\.[^/.]+$/, ""); 
 }
 
-function renderGallery(filter = 'all') {
+// ГЛАВНА ФУНКЦИЯ ЗА ГЕНЕРИРАНЕ
+function renderGallery() {
     grid.innerHTML = ''; 
-    if (filter === 'all') {
-        currentFilteredList = [...allImages];
-    } else {
-        currentFilteredList = allImages.filter(img => img.category === filter);
+    
+    // Филтриране по категория
+    let list = (currentCategory === 'all') ? [...allImages] : allImages.filter(img => img.category === currentCategory);
+    
+    // Филтриране по година (само ако сме в концерти)
+    if (currentCategory === 'concerts' && currentYearFilter !== 'all') {
+        list = list.filter(img => img.name.startsWith(currentYearFilter));
     }
+
+    currentFilteredList = list;
 
     currentFilteredList.forEach((img, index) => {
         const item = document.createElement('div');
@@ -73,12 +83,55 @@ function renderGallery(filter = 'all') {
     });
 }
 
+// ФИЛТЪР КАТЕГОРИИ
 function filterGallery(category, btnElement) {
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     btnElement.classList.add('active');
-    renderGallery(category);
+    
+    currentCategory = category;
+    currentYearFilter = 'all'; // Нулираме годината при смяна на категория
+
+    if (category === 'concerts') {
+        generateYearButtons();
+        yearContainer.style.display = 'flex';
+    } else {
+        yearContainer.style.display = 'none';
+    }
+
+    renderGallery();
 }
 
+// ГЕНЕРИРАНЕ НА БУТОНИ ЗА ГОДИНИ
+function generateYearButtons() {
+    const years = [...new Set(allImages
+        .filter(img => img.category === 'concerts')
+        .map(img => img.name.substring(0, 4))
+    )].sort((a, b) => b - a);
+
+    yearContainer.innerHTML = `
+        <button class="filter-btn ${currentYearFilter === 'all' ? 'active' : ''}" 
+                onclick="filterByYear('all', this)">Всички</button>
+    `;
+
+    years.forEach(year => {
+        if(!isNaN(year)) { // Проверка дали са цифри
+            yearContainer.innerHTML += `
+                <button class="filter-btn ${currentYearFilter === year ? 'active' : ''}" 
+                        onclick="filterByYear('${year}', this)">${year}</button>
+            `;
+        }
+    });
+}
+
+function filterByYear(year, btnElement) {
+    document.querySelectorAll('#yearFilterContainer .filter-btn').forEach(btn => btn.classList.remove('active'));
+    btnElement.classList.add('active');
+    
+    currentYearFilter = year;
+    renderGallery();
+}
+
+// VIEWER ЛОГИКА
 function openFullSize(index) {
     currentIndex = index;
     updateViewer();
@@ -100,8 +153,10 @@ function changeImage(step) {
 
 function updateViewer() {
     const data = currentFilteredList[currentIndex];
-    fullImg.src = `img/gallery/${data.name}`;
-    caption.innerText = formatName(data.name);
+    if (data) {
+        fullImg.src = `img/gallery/${data.name}`;
+        caption.innerText = formatName(data.name);
+    }
 }
 
 // ЕВЕНТИ
@@ -109,9 +164,7 @@ document.getElementById('closeBtn').onclick = closeFullSize;
 document.getElementById('prevBtn').onclick = (e) => { e.stopPropagation(); changeImage(-1); };
 document.getElementById('nextBtn').onclick = (e) => { e.stopPropagation(); changeImage(1); };
 
-viewer.onclick = (e) => {
-    if (e.target === viewer) closeFullSize();
-};
+viewer.onclick = (e) => { if (e.target === viewer) closeFullSize(); };
 
 document.addEventListener('keydown', (e) => {
     if (viewer.style.display === 'flex') {
@@ -121,7 +174,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// --- SWIPE LOGIC ЗА МОБИЛНИ УСТРОЙСТВА ---
+// SWIPE ЛОГИКА
 let touchstartX = 0;
 let touchendX = 0;
 
@@ -131,19 +184,10 @@ viewer.addEventListener('touchstart', e => {
 
 viewer.addEventListener('touchend', e => {
     touchendX = e.changedTouches[0].screenX;
-    handleSwipe();
+    const swipeDistance = touchendX - touchstartX;
+    if (swipeDistance > 50) changeImage(-1);
+    else if (swipeDistance < -50) changeImage(1);
 }, {passive: true});
 
-function handleSwipe() {
-    const swipeDistance = touchendX - touchstartX;
-    // Ако е плъзнато надясно (повече от 50px) -> предишна снимка
-    if (swipeDistance > 50) {
-        changeImage(-1);
-    }
-    // Ако е плъзнато наляво (повече от 50px) -> следваща снимка
-    else if (swipeDistance < -50) {
-        changeImage(1);
-    }
-}
-
-renderGallery('concerts');
+// ИНИЦИАЛИЗАЦИЯ
+filterGallery('concerts', document.querySelector('.filter-btn.active'));

@@ -35,6 +35,13 @@ html {
     text-shadow: 4px 4px #000;
 }
 
+.banner-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 .navbar {
     background: #000;
     border-bottom: 4px solid #fff;
@@ -98,7 +105,7 @@ html {
 
 .news-img {
     width: 100%;
-    filter: grayscale(100%) contrast(150%);
+    filter: none;
     margin: 15px 0;
     border: 3px solid #fff;
 }
@@ -114,23 +121,6 @@ html {
     background-color: #fff;
     height: 20px;
 }
-
-.news-entry {
-    background: #333;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-left: 5px solid #fff;
-}
-
-.banner-img, .img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto 20px;
-    border: 5px solid #fff;
-}
-
-.img { max-width: 50%; }
 
 .socials {
     display: flex;
@@ -149,23 +139,6 @@ html {
 .socials a:hover {
     transform: scale(1.2) translateY(-5px);
     text-shadow: 6px 6px 0px #fff;
-}
-
-.content a {
-    color: #000;
-    text-decoration: none;
-    background: #fff;
-    padding: 5px 10px;
-    text-transform: uppercase;
-    border: 2px solid #000;
-    display: inline-block;
-    transform: rotate(-1deg);
-}
-
-.content a:hover {
-    transform: rotate(2deg) scale(1.1);
-    background: #fff;
-    color: #000;
 }
 
 /* =========================================
@@ -206,10 +179,11 @@ html {
     text-align: center;
     font-weight: bold;
     text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
 .filter-buttons {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
@@ -246,8 +220,22 @@ html {
     border-color: #000;
 }
 
+/* Специфичен стил за годините */
+#yearFilterContainer {
+    border-top: 1px dashed #444;
+    padding-top: 20px;
+    margin-bottom: 30px;
+}
+
+#yearFilterContainer .filter-btn {
+    font-size: 0.9rem;
+    padding: 5px 15px;
+    border-width: 2px;
+    box-shadow: 2px 2px 0px #333;
+}
+
 /* =========================================
-   5. МУЗИКА & VIEWER
+   5. МУЗИКА & VIEWER (MODAL)
    ========================================= */
 .audio-player-container {
     background: #111;
@@ -268,7 +256,7 @@ audio { width: 100%; filter: invert(100%); }
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    touch-action: none; /* Забранява на браузъра да скролва страницата, докато модалът е отворен */
+    touch-action: none;
 }
 
 .img-container { text-align: center; max-width: 90%; }
@@ -278,10 +266,9 @@ audio { width: 100%; filter: invert(100%); }
     max-height: 80vh;
     border: 5px solid #fff;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-    /* Добавяме малко анимация при смяна на снимката */
     transition: opacity 0.2s ease-in-out;
-    user-select: none; /* Пречи на маркирането на снимката при задържане */
-    -webkit-user-drag: none; /* Пречи на вградения drag ефект на браузъра */
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .viewer-caption {
@@ -320,16 +307,14 @@ audio { width: 100%; filter: invert(100%); }
    6. РЕСПОНСИВ ДИЗАЙН (MOBILE)
    ========================================= */
 @media (max-width: 768px) {
-    /* Контейнер */
     .container { flex-direction: column; }
     .sidebar { border-left: none; border-top: 2px dashed #fff; padding-top: 20px; }
     .main-banner h1 { font-size: 2.2rem; }
 
-    /* НАВИГАЦИЯ - ФИКС ЗА СКРОЛ */
     .navbar ul {
         flex-direction: row;
         overflow-x: auto;
-        overflow-y: hidden; /* Спира вертикалното мърдане */
+        overflow-y: hidden;
         justify-content: flex-start;
         padding: 10px;
         gap: 8px;
@@ -342,22 +327,57 @@ audio { width: 100%; filter: invert(100%); }
 
     .navbar a { 
         border: 2px solid #fff; 
-        margin-right: 5px; 
         white-space: nowrap; 
         font-size: 0.9rem;
         padding: 8px 12px;
     }
 
-    /* Филтър бутони */
     .filter-btn {
         padding: 8px 15px;
-        font-size: 1.1rem;
-        font-family: 'Bangers', cursive !important;
+        font-size: 1rem;
         flex: 1 1 auto;
-        text-align: center;
     }
 
-    /* Прозорец за снимки */
+    #yearFilterContainer {
+        gap: 5px;
+    }
+
+    #yearFilterContainer .filter-btn {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+
     #fullSizeImg { max-height: 60vh; }
-    .nav-btn { padding: 10px; font-size: 30px; }
+    .nav-btn { display: none; } /* Скриваме стрелките на мобилни, защото има swipe */
+    .close-btn { top: 10px; right: 20px; font-size: 50px; }
+}
+
+/* Всички линкове в съдържанието и новините */
+.content a, .news-entry a, .section-box a {
+    color: #000 !important; /* Насилствено черен текст */
+    text-decoration: none;
+    background: #fff;
+    padding: 3px 8px;
+    text-transform: uppercase;
+    border: 2px solid #000;
+    display: inline-block;
+    font-weight: bold;
+    margin: 2px 0;
+    transform: rotate(-1deg);
+    transition: 0.2s;
+}
+
+.content a:hover, .news-entry a:hover, .section-box a:hover {
+    transform: rotate(2deg) scale(1.1);
+    background: #fff; /* Малко цвят при посочване - примерно жълто */
+    color: #000;
+}
+
+/* Изключение за социалните икони, за да не станат и те бели кутийки */
+.socials a {
+    background: none !important;
+    border: none !important;
+    transform: none !important;
+    display: inline;
+    padding: 0;
 }

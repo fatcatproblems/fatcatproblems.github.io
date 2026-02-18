@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Галерия | Fat Cat Problems</title>
     
     <link rel="stylesheet" href="style.css">
@@ -14,21 +13,20 @@
 </head>
 <body>
 
-	<header class="main-banner">
-    <img src="banner-fat-cat.jpg" alt="Fat Cat Problems Logo" class="banner-img">
-    <!-- <h1>FAT CAT PROBLEMS</h1> -->
+    <header class="main-banner">
+        <img src="banner-fat-cat.jpg" alt="Fat Cat Problems Logo" class="banner-img">
     </header>
 
-<nav class="navbar" id="main-nav">
-    <ul>
-        <li><a href="index.html">Начало</a></li>
-        <li><a href="index.html#news">Новини</a></li>
-        <li><a href="index.html#info">Инфо</a></li>
-        <li><a href="gallery.html#main-nav">Галерия</a></li>
-        <li><a href="music.html#main-nav">Музика</a></li>
-        <li><a href="index.html#contacts">Контакти</a></li>
-    </ul>
-</nav>
+    <nav class="navbar" id="main-nav">
+        <ul>
+            <li><a href="index.html">Начало</a></li>
+            <li><a href="index.html#news">Новини</a></li>
+            <li><a href="index.html#info">Инфо</a></li>
+            <li><a href="gallery.html#main-nav">Галерия</a></li>
+            <li><a href="music.html#main-nav">Музика</a></li>
+            <li><a href="index.html#contacts">Контакти</a></li>
+        </ul>
+    </nav>
 
     <div class="container">
         <main class="content">
@@ -41,6 +39,9 @@
                     <button class="filter-btn" onclick="filterGallery('members', this)">Членове</button>
                     <button class="filter-btn" onclick="filterGallery('others', this)">Други</button>
                 </div>
+
+                <div id="yearFilterContainer" class="filter-buttons" style="display: none; margin-top: -15px; gap: 10px;">
+                    </div>
 
                 <div class="photo-grid" id="galleryGrid">
                     </div>
