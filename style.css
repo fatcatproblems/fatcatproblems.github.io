@@ -381,3 +381,32 @@ audio { width: 100%; filter: invert(100%); }
     display: inline;
     padding: 0;
 }
+
+/* Фикс за разстоянието на закованата новина отгоре */
+.content .latest-news {
+    margin-bottom: 30px;
+}
+
+/* Стил за футъра */
+.main-footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #000;
+    border-top: 4px solid #fff;
+    margin-top: 50px;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.main-footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Бонус: малко по-красиво разстояние за списъка с членовете на бандата в Инфо секцията */
+#info ul li {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
