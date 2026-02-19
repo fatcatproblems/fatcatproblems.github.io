@@ -767,3 +767,247 @@ audio {
     margin-top: 10px;
     color: #ff0000;
 } */
+
+/* --- СЕКЦИЯ ТЕКСТОВЕ (АРХИВ) --- */
+
+/* Заглавие на архива */
+.archive-title {
+    font-size: 3rem;
+    text-align: center;
+    text-shadow: 4px 4px 0px #000;
+    margin-bottom: 40px;
+    font-family: 'Bangers', cursive;
+    color: #fff;
+}
+
+/* Контейнер на акордеона за албуми */
+.lyrics-album-accordion {
+    background: #1a1a1a;
+    border: 2px solid #333;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.lyrics-album-accordion[open] {
+    border-color: #000;
+}
+
+/* Хедър на албума */
+.album-selection-header {
+    padding: 20px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.album-selection-header:hover {
+    background: #fff;
+    color: #000;
+}
+
+.album-info i {
+    margin-right: 15px;
+    color: #fff;
+}
+
+.album-selection-header:hover .album-info i {
+    color: #fff;
+}
+
+.album-year {
+    font-size: 1rem;
+    color: #888;
+    margin-left: 10px;
+}
+
+/* Анимация на стрелката */
+.lyrics-album-accordion[open] .arrow {
+    transform: rotate(180deg);
+}
+
+/* Решетка за листите */
+.lyrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    background: #111;
+}
+
+/* СТИЛ ЗА МАЛКИЯ ЛИСТ (ПРЕВЮ) */
+/* ПРЕВЮ КАРТИЧКА */
+.lyrics-sheet {
+    height: 380px; /* Малко по-компактна */
+    min-height: 380px;
+    overflow: hidden;
+    position: relative;
+    background: #fdfdfd;
+    padding: 25px;
+    border-left: 5px solid #000;
+    cursor: zoom-in;
+    transition: transform 0.2s;
+    text-align: left;
+}
+
+.lyrics-sheet p {
+    white-space: pre-line !important; /* Запазва новите редове, но чисти излишните интервали */
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #333;
+    margin-top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    
+    /* Ограничаваме до 6 реда, за да изглежда подредено */
+    display: -webkit-box;
+    -webkit-line-clamp: 6; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* МОДАЛЕН ПРОЗОРЕЦ */
+.modal-content {
+    background-color: #fdfdfd;
+    margin: 40px auto;
+    padding: 50px 40px;
+    border-left: 12px solid #000;
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    display: block !important;
+}
+
+/* ТЕКСТЪТ В МОДАЛА */
+.modal-text-style {
+    white-space: pre-wrap !important; 
+    display: block !important;
+    text-align: left !important;
+    line-height: 1.7;
+    font-size: 1.25rem;
+    color: #111;
+    font-family: 'Courier New', monospace;
+    margin-top: 20px;
+}
+
+/* ОПРАВЯНЕ НА УДЕБЕЛЕНИЯ ТЕКСТ (Припев/Куплет) */
+.modal-text-style strong {
+    color: #000;
+    display: inline-block; /* За да не чупи реда */
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.lyrics-sheet h3 {
+    font-family: 'Bangers', cursive;
+    color: #000;
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px dashed #ccc;
+    padding-bottom: 10px;
+}
+
+
+
+/* Ефект на избледняване и бутон за превюто */
+.lyrics-sheet::after {
+    content: "ПРОЧЕТИ ЦЕЛИЯ ТЕКСТ";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(transparent, #fdfdfd 80%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bangers', cursive;
+    color: #000;
+    font-size: 1.1rem;
+    padding-top: 25px;
+    pointer-events: none;
+}
+
+/* Ротации за разхвърлян вид */
+.rotate-right { transform: rotate(1.5deg); }
+.rotate-left { transform: rotate(-1.5deg); }
+
+.lyrics-sheet:hover {
+    transform: scale(1.03) rotate(0deg) !important;
+    z-index: 10;
+    border-color: #000;
+}
+
+.sheet-number {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-weight: bold;
+    color: #ddd;
+    font-size: 1.2rem;
+}
+
+/* --- МОДАЛЕН ПРОЗОРЕЦ (ПЪЛЕН ЕКРАН) --- */
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.95);
+    overflow-y: auto;
+    padding: 50px 20px;
+    cursor: zoom-out;
+}
+
+.modal-content {
+    background-color: #fdfdfd;
+    margin: 20px auto;
+    padding: 60px 40px;
+    border-left: 12px solid #000;
+    width: 100%;
+    max-width: 700px;
+    color: #111;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    display: block !important; /* Убива колоните */
+    text-align: left !important;
+}
+
+/* Стил за заглавието в модала */
+.modal-content h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+    color: #000;
+    margin: 0 0 20px 0;
+    border-bottom: 2px solid #ddd;
+    display: block;
+}
+
+
+
+/* Бутон за затваряне */
+.close-modal {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10001;
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    color: #000;
+}
