@@ -538,3 +538,232 @@ audio { width: 100%; filter: invert(100%); }
 .mini-counter-static:hover img {
     filter: grayscale(0%);
 }
+
+/* Албум Акордеон */
+.album-container {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.album-accordion summary {
+    list-style: none; /* Махаме стандартната стрелка */
+    outline: none;
+    cursor: pointer;
+}
+
+.album-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Рамката на обложката */
+.album-cover-frame {
+    position: relative;
+    border: 5px solid #fff;
+    box-sizing: border-box;
+    box-shadow: 12px 12px 0px #000;
+    line-height: 0;
+    transition: transform 0.2s;
+}
+
+.album-cover-frame:hover {
+    transform: translate(-4px, -4px);
+    
+}
+
+.album-cover-img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(20%);
+}
+
+/* Надписът върху обложката */
+.album-hint {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    background: #fff;
+    color: #000;
+    padding: 10px 15px;
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    transform: rotate(-2deg);
+    box-shadow: 4px 4px 0px #000;
+}
+
+/* Списъкът с песни след отваряне */
+.tracklist-expanded {
+    background: #222;
+    border: 3px solid #fff;
+    margin-top: 15px;
+    padding: 15px;
+    box-shadow: 8px 8px 0px #fff;
+}
+
+.track-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px dashed #555;
+    flex-wrap: wrap; /* Позволява на бутона да мине отдолу на много тесни телефони */
+    gap: 10px;
+}
+
+.track-row:last-of-type {
+    border-bottom: none;
+}
+
+.track-meta {
+    font-family: 'Courier New', monospace;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.track-num {
+    color: #fff;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.track-title {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.track-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Стилизиране на аудио плейъра за по-добър изглед */
+audio {
+    height: 35px;
+    filter: invert(1) hue-rotate(180deg); /* Прави стандартния плейър тъмен */
+}
+
+
+
+
+.album-footer-note {
+    font-family: 'Bangers', cursive;
+    text-align: center;
+    margin-top: 15px;
+    color: #888;
+}
+
+/* Стилизиране на самия аудио плейър */
+.punk-player {
+    height: 35px;
+    width: 220px; /* Фиксирана ширина, за да не "играе" */
+    filter: invert(100%) hue-rotate(180deg) brightness(1.5); /* Прави го бял/светъл на тъмния фон */
+    outline: none;
+}
+
+.track-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap; /* За да не се чупи на малки телефони */
+}
+
+.punk-download-link {
+    background: #fff;
+    color: #000;
+    padding: 0 15px; /* Променяме от фиксирана ширина на padding */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Разстояние между иконата и текста */
+    text-decoration: none;
+    border: 2px solid #fff;
+    font-family: 'Bangers', cursive; /* Пънк шрифт за бутона */
+    font-size: 1rem;
+    box-shadow: 4px 4px 0px #000;
+    transition: 0.2s;
+    min-width: 100px; /* Даваме му минимална ширина */
+}
+
+.punk-download-link span {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.punk-download-link:hover {
+    background: #fff;
+    color: #000;
+    transform: scale(1.05);
+    box-shadow: 2px 2px 0px #000;
+}
+
+.lyrics-chorus {
+    border-left: 3px solid #ff0000;
+    padding-left: 10px;
+    font-style: italic;
+    margin: 15px 0;
+}
+
+.lyrics-outro {
+    text-align: right;
+    font-weight: bold;
+    color: #555;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.album-credits {
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 2px solid #333;
+    background: rgba(0, 0, 0, 0.4); /* Леко потъмняване за контраст */
+    color: #bbb;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.credits-header h3 {
+    font-family: 'Bangers', cursive;
+    color: #fff;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.credits-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* По подразбиране е една колона за телефон */
+    gap: 10px;
+}
+
+/* На по-големи екрани става на две колони */
+@media (min-width: 600px) {
+    .credits-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.credit-item {
+    border-bottom: 1px solid #222;
+    padding-bottom: 5px;
+}
+
+.credit-item .label {
+    font-weight: bold;
+    color: #888;
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.credit-item .value {
+    color: #eee;
+}
+
+/* Благодарностите да заемат целия ред */
+/* .credit-item:last-child {
+    grid-column: 1 / -1;
+    border-bottom: none;
+    margin-top: 10px;
+    color: #ff0000;
+} */
