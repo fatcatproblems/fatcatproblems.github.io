@@ -54,9 +54,16 @@
         <span class="close-btn" id="closeBtn">&times;</span>
         <button class="nav-btn prev" id="prevBtn">&#10094;</button>
         
-        <div class="img-container">
-            <img id="fullSizeImg" src="" alt="View">
-            <div id="fullSizeCaption" class="viewer-caption"></div>
+        <div class="viewer-content-wrapper">
+            <div class="img-container">
+                <img id="fullSizeImg" src="" alt="View">
+                <div id="fullSizeCaption" class="viewer-caption"></div>
+            </div>
+
+            <div id="memberBioSection" class="bio-container" style="display: none;">
+                <h3 id="bioName">Име</h3>
+                <p id="bioText">Биография...</p>
+            </div>
         </div>
         
         <button class="nav-btn next" id="nextBtn">&#10095;</button>

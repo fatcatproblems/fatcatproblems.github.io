@@ -1011,3 +1011,53 @@ audio {
 .close-modal:hover {
     color: #000;
 }
+
+/* Модално оформление за снимка + био */
+.viewer-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 90%;
+    gap: 30px;
+}
+
+.bio-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    max-width: 350px;
+    color: #111;
+    border-left: 8px solid #ff0000;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
+    text-align: left;
+}
+
+.bio-container h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    color: #ff0000;
+    margin-bottom: 15px;
+}
+
+.bio-container p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Мобилна версия */
+@media (max-width: 900px) {
+    .viewer-content-wrapper {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    .bio-container {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}
+.img-container img {
+    max-height: 80vh; /* Снимката да не надвишава 80% от височината на екрана */
+    width: auto;
+    object-fit: contain;
+}

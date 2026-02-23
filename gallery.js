@@ -29,14 +29,17 @@ const allImages = [
     { name: '2025.10.25 Punky Blues.jpg', category: 'concerts', title: 'Live in Sofia' },
     { name: '2025.12.05 Зимен Дъжд, НаштеХора @ThePit.jpg', category: 'concerts', title: 'Live in Sofia' },
     { name: '2026.02.21 Toy Letters @ Carve.jpg', category: 'concerts', title: 'Live in Sofia' },
-    { name: 'Kolyo.jpg', category: 'members', title: 'Member' },
-    { name: 'Murphy.jpg', category: 'members', title: 'Member' },
-    { name: 'Emo.jpg', category: 'members', title: 'Member' },
-    { name: 'Niki.jpg', category: 'members', title: 'Member' },
-    { name: 'Mitko.jpg', category: 'members', title: 'Member' },
-    { name: 'Majorkata.jpg', category: 'members', title: 'Member' },
-    { name: 'Asen.jpg', category: 'members', title: 'Member' },
-    { name: 'Rado.jpg', category: 'members', title: 'Member' },
+    
+    // ЧЛЕНОВЕ С БИОГРАФИИ
+    { name: 'Kolyo.jpg', category: 'members', title: 'Кольо', bio: 'Кольо е бас и глас в тази формация.' },
+    { name: 'Murphy.jpg', category: 'members', title: 'Мърфи', bio: 'Мърфи се грижи за барабаните.' },
+    { name: 'Emo.jpg', category: 'members', title: 'Емо', bio: 'Емо е с тромпета в брас секцията и бек вокали.' },
+    { name: 'Niki.jpg', category: 'members', title: 'Ники', bio: 'Ники е със Саксофон изпълващ браса.' },
+    { name: 'Mitko.jpg', category: 'members', title: 'Митко', bio: 'Митко се грижи за китарите.' },
+    { name: 'Majorkata.jpg', category: 'members', title: 'Мажорката', bio: 'Жорето е с тромбона. Той е сърцето на агитката винаги готов за пого.' },
+    { name: 'Asen.jpg', category: 'members', title: 'Асен', bio: 'Асен е нашият алкохолен техник, и моралната подкрепа.' },
+    { name: 'Rado.jpg', category: 'members', title: 'Радо', bio: 'Радо е най-новото поълнение. Вокалните му умения скоро ще изпълват сцената все повече.' },
+    
     { name: 'misc/image1.jpg', category: 'others', title: 'Member' },
     { name: 'misc/image2.jpg', category: 'others', title: 'Member' },
     { name: 'misc/image3.jpg', category: 'others', title: 'Member' },
@@ -63,18 +66,19 @@ const fullImg = document.getElementById('fullSizeImg');
 const caption = document.getElementById('fullSizeCaption');
 const yearContainer = document.getElementById('yearFilterContainer');
 
+// НОВИ ЕЛЕМЕНТИ ЗА БИО
+const bioSection = document.getElementById('memberBioSection');
+const bioName = document.getElementById('bioName');
+const bioText = document.getElementById('bioText');
+
 function formatName(fileName) {
-    return fileName.replace(/\.[^/.]+$/, ""); 
+    return fileName.replace(/\.[^/.]+$/, "").split('/').pop(); 
 }
 
-// ГЛАВНА ФУНКЦИЯ ЗА ГЕНЕРИРАНЕ
 function renderGallery() {
     grid.innerHTML = ''; 
-    
-    // Филтриране по категория
     let list = (currentCategory === 'all') ? [...allImages] : allImages.filter(img => img.category === currentCategory);
     
-    // Филтриране по година (само ако сме в концерти)
     if (currentCategory === 'concerts' && currentYearFilter !== 'all') {
         list = list.filter(img => img.name.startsWith(currentYearFilter));
     }
@@ -85,7 +89,7 @@ function renderGallery() {
         const item = document.createElement('div');
         item.className = 'photo-item';
         const imagePath = `img/gallery/${img.name}`;
-        const displayName = formatName(img.name);
+        const displayName = img.title !== 'Member' && img.title !== 'Live in Sofia' ? img.title : formatName(img.name);
         
         item.innerHTML = `
             <img src="${imagePath}" alt="${displayName}" loading="lazy">
@@ -96,13 +100,11 @@ function renderGallery() {
     });
 }
 
-// ФИЛТЪР КАТЕГОРИИ
 function filterGallery(category, btnElement) {
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     btnElement.classList.add('active');
-    
     currentCategory = category;
-    currentYearFilter = 'all'; // Нулираме годината при смяна на категория
+    currentYearFilter = 'all';
 
     if (category === 'concerts') {
         generateYearButtons();
@@ -110,28 +112,20 @@ function filterGallery(category, btnElement) {
     } else {
         yearContainer.style.display = 'none';
     }
-
     renderGallery();
 }
 
-// ГЕНЕРИРАНЕ НА БУТОНИ ЗА ГОДИНИ
 function generateYearButtons() {
     const years = [...new Set(allImages
         .filter(img => img.category === 'concerts')
         .map(img => img.name.substring(0, 4))
     )].sort((a, b) => b - a);
 
-    yearContainer.innerHTML = `
-        <button class="filter-btn ${currentYearFilter === 'all' ? 'active' : ''}" 
-                onclick="filterByYear('all', this)">Всички</button>
-    `;
+    yearContainer.innerHTML = `<button class="filter-btn ${currentYearFilter === 'all' ? 'active' : ''}" onclick="filterByYear('all', this)">Всички</button>`;
 
     years.forEach(year => {
-        if(!isNaN(year)) { // Проверка дали са цифри
-            yearContainer.innerHTML += `
-                <button class="filter-btn ${currentYearFilter === year ? 'active' : ''}" 
-                        onclick="filterByYear('${year}', this)">${year}</button>
-            `;
+        if(!isNaN(year)) {
+            yearContainer.innerHTML += `<button class="filter-btn ${currentYearFilter === year ? 'active' : ''}" onclick="filterByYear('${year}', this)">${year}</button>`;
         }
     });
 }
@@ -139,12 +133,10 @@ function generateYearButtons() {
 function filterByYear(year, btnElement) {
     document.querySelectorAll('#yearFilterContainer .filter-btn').forEach(btn => btn.classList.remove('active'));
     btnElement.classList.add('active');
-    
     currentYearFilter = year;
     renderGallery();
 }
 
-// VIEWER ЛОГИКА
 function openFullSize(index) {
     currentIndex = index;
     updateViewer();
@@ -164,19 +156,27 @@ function changeImage(step) {
     updateViewer();
 }
 
+// ОБНОВЕНА ФУНКЦИЯ ЗА ВИЗУАЛИЗАЦИЯ
 function updateViewer() {
     const data = currentFilteredList[currentIndex];
     if (data) {
         fullImg.src = `img/gallery/${data.name}`;
-        caption.innerText = formatName(data.name);
+        caption.innerText = data.title !== 'Member' && data.title !== 'Live in Sofia' ? data.title : formatName(data.name);
+        
+        // ЛОГИКА ЗА БИОГРАФИЯТА
+        if (data.bio) {
+            bioSection.style.display = 'block';
+            bioName.innerText = data.title;
+            bioText.innerText = data.bio;
+        } else {
+            bioSection.style.display = 'none';
+        }
     }
 }
 
-// ЕВЕНТИ
 document.getElementById('closeBtn').onclick = closeFullSize;
 document.getElementById('prevBtn').onclick = (e) => { e.stopPropagation(); changeImage(-1); };
 document.getElementById('nextBtn').onclick = (e) => { e.stopPropagation(); changeImage(1); };
-
 viewer.onclick = (e) => { if (e.target === viewer) closeFullSize(); };
 
 document.addEventListener('keydown', (e) => {
@@ -187,14 +187,9 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// SWIPE ЛОГИКА
 let touchstartX = 0;
 let touchendX = 0;
-
-viewer.addEventListener('touchstart', e => {
-    touchstartX = e.changedTouches[0].screenX;
-}, {passive: true});
-
+viewer.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, {passive: true});
 viewer.addEventListener('touchend', e => {
     touchendX = e.changedTouches[0].screenX;
     const swipeDistance = touchendX - touchstartX;
@@ -202,5 +197,4 @@ viewer.addEventListener('touchend', e => {
     else if (swipeDistance < -50) changeImage(1);
 }, {passive: true});
 
-// ИНИЦИАЛИЗАЦИЯ
 filterGallery('concerts', document.querySelector('.filter-btn.active'));
