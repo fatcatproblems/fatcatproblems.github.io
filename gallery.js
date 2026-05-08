@@ -30,6 +30,7 @@ const allImages = [
     { name: '2025.12.05 Зимен Дъжд, НаштеХора @ThePit.jpg', category: 'concerts', title: 'Live in Sofia' },
     { name: '2026.02.21 Toy Letters @ Carve.jpg', category: 'concerts', title: 'Live in Sofia' },
     { name: '2026.04.04 Mizeriq, MZP,CEME @ Cherepite.jpg', category: 'concerts', title: 'Live in Sofia' },
+    { name: '2026.05.16 Вой!@Carve.jpg', category: 'concerts', title: 'Live in Sofia' },
     
     // ЧЛЕНОВЕ С БИОГРАФИИ
     { name: 'Kolyo.jpg', category: 'members', title: 'Кольо', bio: 'Кольо е бас и глас в тази формация.' },
