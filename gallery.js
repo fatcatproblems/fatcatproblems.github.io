@@ -33,6 +33,7 @@ const allImages = [
     { name: '2026.05.16 Вой!@Carve.jpg', category: 'concerts', title: 'Live in Sofia' },
     { name: '2026.09.13 FatCat@ЛятнаСцена.jpg', category: 'concerts', title: 'Live in Sofia' },
     { name: '2026.18.11 Pomorians@Stroeja.jpg', category: 'concerts', title: 'Live in Sofia' },
+    { name: '2026.11.28 @ Carve.jpg', category: 'concerts', title: 'Live in Sofia' },
     
     // ЧЛЕНОВЕ С БИОГРАФИИ
     { name: 'Kolyo.jpg', category: 'members', title: 'Кольо', bio: 'Кольо е бас и глас в тази формация.' },
